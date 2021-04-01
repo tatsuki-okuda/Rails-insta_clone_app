@@ -22,6 +22,17 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'annotate'
+gem 'active_decorator'
+# activerecordに紐づくデータをAPIにしてくれるgem
+gem 'active_model_serializers'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'faker'
+gem 'hamlit'
+# /ログイン
+gem 'devise'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -31,6 +42,14 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # 変数の値をデバッグできるようにする
+  gem 'pry-byebug'
+  # 文法チェック
+  gem 'rubocop-rails'
+  # 環境変数
+  # gem 'dotenv-rails' 
+  # gem 'rspec-rails'
+  # gem 'factory_bot_rails'
 end
 
 group :development do
@@ -40,6 +59,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # ハムルの変換ようgem
+  gem 'haml-rails'
+  gem 'erb2haml'
+  # gem 'letter_opener'
+  # gem 'letter_opener_web', '~> 1.0'
+  
 end
 
 group :test do
