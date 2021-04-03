@@ -24,4 +24,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   
+  has_many :card, dependent: :destroy
+  has_one :profile, dependent: :destroy
 end
