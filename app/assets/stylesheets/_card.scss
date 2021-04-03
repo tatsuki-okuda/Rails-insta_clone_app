@@ -1,5 +1,9 @@
 
 
+.cardBox{
+  padding: 42px 0;
+}
+
 .card{
   width: 90%;
   margin: 0 auto;
@@ -11,6 +15,8 @@
     align-items: center;
     margin-bottom:11px;
     &_img{
+      width: 30px;
+      height: 30px;
       margin-right: 8px;
     }
     &_text{
@@ -35,13 +41,21 @@
   
 
   &_body{
-
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
   }
 
   &_footer{
     &_icons{
       display: flex;
       align-items: center;
+      margin-bottom: 8px;
+      & img {
+        &:nth-child(2){
+          margin: 0 14px;
+        }
+      }
     }
     &_text{
       &:first-of-type{
