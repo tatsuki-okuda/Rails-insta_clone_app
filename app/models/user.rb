@@ -26,4 +26,15 @@ class User < ApplicationRecord
   
   has_many :card, dependent: :destroy
   has_one :profile, dependent: :destroy
+
+
+
+  def avataor_image
+    if profile&.avataor&.attached?
+      profile.avator
+    else
+      'Ellipse.png'
+    end
+  end
+  
 end

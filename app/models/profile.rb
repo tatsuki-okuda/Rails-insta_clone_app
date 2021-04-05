@@ -13,4 +13,6 @@
 #
 class Profile < ApplicationRecord
   belongs_to :user
+  # profileにavatarという画像を設定できる
+  has_one_attached :avatar
 end

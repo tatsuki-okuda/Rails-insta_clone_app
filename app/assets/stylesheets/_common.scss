@@ -67,3 +67,27 @@ input {
   }
 }
 
+
+header{
+  padding-top: 46px;
+}
+.headerCt{
+  position: relative;
+}
+
+.arrow-back{
+  position: absolute;
+  top: 50%;
+  left: 0 ;
+  transform: translate(0, -50%);
+}
+
+.userName{
+  margin: 0 auto;
+  font-family: Poppins;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+}

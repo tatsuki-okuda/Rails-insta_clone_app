@@ -9,6 +9,16 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
+      .ct.headerCt
+        - if user_signed_in?
+          - if current_page?(root_path) 
+            = image_tag 'photo-camera (1).png'
+          - else
+            = image_tag 'arrow.png', class: 'arrow-back'
+          - if current_page?(profile_path)
+            %p.userName 
+              = current_user.username
+          
       - if flash.present?
         .flash
           - flash.each do |key, value|
