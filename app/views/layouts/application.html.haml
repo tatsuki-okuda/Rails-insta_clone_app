@@ -12,12 +12,26 @@
       .ct.headerCt
         - if user_signed_in?
           - if current_page?(root_path) 
-            = image_tag 'photo-camera (1).png'
+            -# 投稿画面遷移
+            = link_to new_card_path do
+              = image_tag 'photo-camera (1).png'
           - else
-            = image_tag 'arrow.png', class: 'arrow-back'
+            -# 投稿画面遷移の時
+            - if current_page?(new_card_path)
+              .newCardBox
+                %a.cance
+                  Cance
+                %p Status
+                %p.post Post 
+            - else
+              -# 戻るの矢印
+              = image_tag 'arrow.png', class: 'arrow-back'
+          -# プロフィールの時は名前を表示
           - if current_page?(profile_path)
             %p.userName 
               = current_user.username
+         
+          
           
       - if flash.present?
         .flash
