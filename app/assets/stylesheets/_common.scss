@@ -1,6 +1,15 @@
 
 html{
   font-size: 62.5%;
+  
+}
+
+body{
+  font-family: Poppins;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 *{
@@ -90,4 +99,16 @@ header{
   font-weight: 500;
   line-height: 1.6;
   text-align: center;
+}
+
+.newCardBox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .cance{
+    color: #2F80ED;
+  }
+  .post{
+    color: #BDBDBD;
+  }
 }

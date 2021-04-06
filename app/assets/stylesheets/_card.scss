@@ -75,3 +75,38 @@
     }
   }
 }
+
+
+
+.userTitleBox{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  &_icon{
+    height: 40px;
+    width: 40px;
+    left: 16px;
+    top: 111px;
+    border-radius: 30px;
+    margin-right: 18px;
+   
+  }
+}
+
+
+.formBox{
+  .input{
+    margin-bottom: 24px;
+    &::placeholder{
+      color: #BDBDBD;
+    }
+    &:focus{
+      &::placeholder{
+        color: transparent;
+      }
+    }
+  }
+  .imgs{
+    border-bottom: unset;
+  }
+}
