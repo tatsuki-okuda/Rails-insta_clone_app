@@ -8,6 +8,9 @@
     .formBox
       = form_with(model: @card, local: true) do |f|
         %div.inputbox
-          = f.text_field :text, class: 'input',:placeholder => "What's on your mind ?"
+          = f.text_field :content, class: 'input',:placeholder => "What's on your mind ?"
         %div
-          = f.file_field :imgs, class: 'imgs'
+          = f.label :imgs, 'Album', class: 'imgs_btn'
+        %div
+          = f.file_field :imgs,:multiple => true, class: 'imgs'
+        = f.submit "保存", class: 'btn-primary'

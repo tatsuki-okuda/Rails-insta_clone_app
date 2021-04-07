@@ -1,47 +1,31 @@
 .cardBox
   .ct
     %ul
-      %li.card
-        .card_header
-          = link_to profile_path, class: "card_header_img" do
-            = image_tag 'icon.png',class: 'object-fit'
-          .card_header_text
-            %p name
-            %p 3 hours ago
-        .card_body
-          = image_tag 'Rectangle1.png'
-          .card_body_inner
-            = image_tag 'Rectangle (1).png'
-            = image_tag 'Rectangle (2).png'
-        .card_footer
-          .card_footer_icons
-            = image_tag 'Vector.png'
-            = image_tag 'Vector (1).png'
-            = image_tag 'Vector (2).png'
-          %p.card_footer_text 
-            Jasmine and 12,000 other liked your post
-          %p.card_footer_text 
-            Jmax_21  Summer holiday :3
-      %li.card
-        .card_header
-          = link_to profile_path, class: "card_header_img" do
-            = image_tag 'icon.png',class: 'object-fit'
-          .card_header_text
-            %p name
-            %p 3 hours ago
-        .card_body
-          = image_tag 'Rectangle1.png'
-          .card_body_inner
-            = image_tag 'Rectangle (1).png'
-            = image_tag 'Rectangle (2).png'
-        .card_footer
-          .card_footer_icons
-            = image_tag 'Vector.png'
-            = image_tag 'Vector (1).png'
-            = image_tag 'Vector (2).png'
-          %p.card_footer_text 
-            Jasmine and 12,000 other liked your post
-          %p.card_footer_text 
-            Jmax_21  Summer holiday :3
+      - @cards.each do |card|
+        %li.card
+          .card_header
+            = link_to profile_path, class: "card_header_img" do
+              = image_tag 'icon.png',class: 'object-fit'
+            .card_header_text
+              %p name
+              %p 3 hours ago
+          .card_body
+            - if card.imgs&.attached?
+              = image_tag card.imgs[0]
+            - else
+              = image_tag 'Rectangle1.png'
+              .card_body_inner
+                = image_tag 'Rectangle (1).png'
+                = image_tag 'Rectangle (2).png'
+          .card_footer
+            .card_footer_icons
+              = image_tag 'Vector.png'
+              = image_tag 'Vector (1).png'
+              = image_tag 'Vector (2).png'
+            %p.card_footer_text 
+              = card.content
+            %p.card_footer_text 
+              Jmax_21  Summer holiday :3
+
 
       
