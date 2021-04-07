@@ -108,5 +108,24 @@
   }
   .imgs{
     border-bottom: unset;
+    display: none;
+    &_btn{
+      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #E0E0E0;
+      padding: 0 10px 0 8px;
+      width: 73px;
+      height: 24px;
+      color: #4F4F4F;
+      text-decoration: none;
+      text-align: right;
+      &::before{
+        content: '+';
+        font-weight: 700;
+        font-size:  1.8rem;
+      }
+    }
   }
 }
