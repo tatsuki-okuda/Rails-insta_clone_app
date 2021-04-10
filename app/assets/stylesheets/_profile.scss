@@ -6,6 +6,9 @@
     height: 76.88px;
     border-radius: 50%;
     margin: 0 auto 46px;
+    .avatar{
+      border-radius: 50%;
+    }
     &::before{
       content: '';
       position: absolute;
