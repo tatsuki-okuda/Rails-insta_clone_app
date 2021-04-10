@@ -3,7 +3,7 @@
     = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
       =f.label :image do
         .profileBox_icon
-          = image_tag current_user.avataor_image, class: 'object-fit'
+          = image_tag current_user.avataor_image, class: 'object-fit avatar'
           = f.file_field :image, class: 'uploader', style: 'display:none'
     .profileBox_dataBox
       .profileBox_dataBox_inner
@@ -27,4 +27,5 @@
         = image_tag 'img1.png'
 
 = javascript_pack_tag 'profile'
+
 

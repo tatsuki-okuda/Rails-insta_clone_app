@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :cards do
   end
 
-  resource :profile, only: [ :show, :edit, :update]
+  resource :profile
 end

@@ -25,3 +25,4 @@ emily = User.create!(username: 'emily',email: 'emily1@example.com', password: 'p
 #       content: Faker::Lorem.sentence(word_count: 100)
 #   )
 # end
+
