@@ -6,6 +6,7 @@ class CardsController < ApplicationController
     if(current_user)
       @cards = current_user.cards.all
     end
+    
   end
 
   def  new
