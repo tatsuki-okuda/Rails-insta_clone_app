@@ -1,4 +1,4 @@
-class AvatarController < ApplicationController
+class AvatarsController < ApplicationController
 
 
   def create   
