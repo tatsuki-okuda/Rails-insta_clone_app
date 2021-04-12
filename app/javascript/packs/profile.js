@@ -31,7 +31,10 @@ document.addEventListener('turbolinks:load', () => {
     // axios.post(`/profile`,{
     //   profile: {avatar: content}
     // })
-    axios.post(`/profile`)
+
+    // ↓ここをprofileからavatarに変更！！
+    // axios.post(`/profile`)
+    axios.post(`/avatar`)
     .then((res) => {
       console.log('ok');
     })

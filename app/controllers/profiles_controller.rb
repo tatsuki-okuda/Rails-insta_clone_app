@@ -14,7 +14,6 @@ class ProfilesController < ApplicationController
     
     # current_userに紐づくprofileの空箱を作る。データはavateだけ
 
-    
     @profile = current_user.profile.build(profile_params)
     # @profile = current_user.build_profile(profile_params)
     
