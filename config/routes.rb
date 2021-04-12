@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resource :profile
+  resource :avatar
+
 end
