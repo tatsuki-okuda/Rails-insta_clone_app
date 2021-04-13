@@ -1,12 +1,11 @@
 class AvatarsController < ApplicationController
 
 
-  def create   
+  def update
     
-    
-    binding.pry
     
     @avatar = current_user.profile(avatar_params)
+
     
     @avatar.save!
     render json: @avatar

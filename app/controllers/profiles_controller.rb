@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
     
   end
 
-  def create
+  def update
     
     # current_userに紐づくprofileの空箱を作る。データはavateだけ
 

@@ -18,23 +18,22 @@ document.addEventListener('turbolinks:load', () => {
   const uploader = document.querySelector('.uploader');
   // inputで値が変更された時にイベント発火
   uploader.addEventListener('change', ()=> {
-    // 画像の切り替え
+    // inputに設定されたfileの情報を取得
+    // 一つしかアップされないので0番目
     const file = uploader.files[0];
+    // 非同期でアップされたファイルを読み込むインスタンスを生成
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
+      // result 属性にはファイルのデータを表す data: の URL が格納される
       const image = reader.result;
       document.querySelector('.avatar').setAttribute('src', image);
     }
 
-    // postでデータを保存する。
-    // axios.post(`/profile`,{
-    //   profile: {avatar: content}
-    // })
 
-    // ↓ここをprofileからavatarに変更！！
-    // axios.post(`/profile`)
-    axios.post(`/avatar`)
+    axios.put(`/avatar`,{
+      avatar: {avatar: file}
+    })
     .then((res) => {
       console.log('ok');
     })
