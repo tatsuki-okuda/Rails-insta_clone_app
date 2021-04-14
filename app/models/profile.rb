@@ -13,11 +13,12 @@
 #
 class Profile < ApplicationRecord
   belongs_to :user
-  # profileにavatarという画像を設定できる
-  has_one_attached :avatar
+
 
   def avatar_url
     # 紐づいている画像のURLを取得する
     avatar.attached? ? url_for(avatar) : nil
   end
+
+  
 end

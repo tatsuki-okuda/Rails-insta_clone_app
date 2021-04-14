@@ -24,20 +24,31 @@ document.addEventListener('turbolinks:load', () => {
     // 非同期でアップされたファイルを読み込むインスタンスを生成
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => {
-      // result 属性にはファイルのデータを表す data: の URL が格納される
-      const image = reader.result;
-      document.querySelector('.avatar').setAttribute('src', image);
-    }
+    // reader.onload = () => {
+    //   // result 属性にはファイルのデータを表す data: の URL が格納される
+    //   const image = reader.result;
+    //   document.querySelector('.avatar').setAttribute('src', image);
+    // }
 
+    // axiosのrequest config　インスタンスを作って、レスポンスタイプを変更する。
+    const axiosInstance = axios.create({
+      responseType: 'arraybuffer',
+      headers: {
+        'Content-Type': 'image/png'
+      }
+    });
 
-    axios.put(`/avatar`,{
-      avatar: {avatar: file}
-    })
+    // paramsの定義
+    const params = new FormData();
+    params.append('avatar', file);
+ 
+    // 作成したインスタンスを元にして、リクエストを投げる  
+    axiosInstance.put(`/avatar`,params)
     .then((res) => {
       console.log('ok');
     })
     .catch( e => console.log('out!'));
+
   })
 
 

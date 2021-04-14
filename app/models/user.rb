@@ -26,6 +26,7 @@ class User < ApplicationRecord
   
   has_many :cards, dependent: :destroy
   has_one :profile, dependent: :destroy
+  has_one :avatar, dependent: :destroy
 
 
 
@@ -35,6 +36,11 @@ class User < ApplicationRecord
     else
       'Ellipse.png'
     end
+  end
+
+
+  def prepare_avatar
+    avatar || build_avatar
   end
   
 end
