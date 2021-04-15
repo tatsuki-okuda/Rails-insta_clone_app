@@ -25,22 +25,17 @@ class User < ApplicationRecord
 
   
   has_many :cards, dependent: :destroy
-  has_one :profile, dependent: :destroy
-  has_one :avatar, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
 
 
 
   def avataor_image
-    if profile&.avataor&.attached?
-      profile.avator
+    if avatar.attached?
+      avatar
     else
       'Ellipse.png'
     end
   end
 
-
-  def prepare_avatar
-    avatar || build_avatar
-  end
   
 end

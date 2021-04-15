@@ -3,14 +3,13 @@ class AvatarsController < ApplicationController
 
   def update
 
-    # @avatar = current_user.prepare_avatar
-    @avatar = current_user.build_avatar
-    @avatar.assign_attributes(avatar_params)
+    # @avatar = current_user.build_avatar
+    # @avatar.assign_attributes(avatar_params)
 
+    current_user.update_attributes(avatar_params)
     
-    @avatar.save!
-    if @avatar.save
-        render json: @avatar
+    if current_user.update_attributes(avatar_params)
+
     else
         flash.now[:error] = '更新できませんでした'
         render profile_path
