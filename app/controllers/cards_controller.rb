@@ -10,7 +10,6 @@ class CardsController < ApplicationController
   end
 
   def  new
-    # @card = current_user.cards.build
     @card = current_user.cards.build
   end
 

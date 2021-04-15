@@ -1,13 +1,25 @@
 class ProfilesController < ApplicationController
 
   def show
-    # プロフィールがある時(アバターがデフォルトではなくて、保存されている時)にアバターの情報をとってくる。
-    # if(current_user.profile)
-    #   profile = Profile.find(current_user)
-    #   # avatar = profile.avatar
-    #   render json: @profile
-    # end
-    
+    @avatar = current_user.avatar
+    # render "avatar", formats: :json, handlers: "jbuilder"   
+  end
+
+
+  def update
+    if current_user.update_attributes(avatar_params)
+      # redirect_to profile_path, notice: '更新できました'
+      render json: { a: 'aaaa' }
+    else
+      flash.now[:error] = '更新できませんでした'
+      render :show
+    end 
+  end
+  
+
+  private
+  def avatar_params
+    params.permit(:avatar)
   end
   
 end
