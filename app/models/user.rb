@@ -29,13 +29,13 @@ class User < ApplicationRecord
 
 
 
-  def avataor_image
-    if avatar.attached?
-      avatar
-    else
-      'Ellipse.png'
-    end
-  end
+  # def avataor_image
+  #   if avatar.attached?
+  #     avatar
+  #   else
+  #     'Ellipse.png'
+  #   end
+  # end
 
   
 end
