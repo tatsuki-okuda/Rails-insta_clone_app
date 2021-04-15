@@ -1,9 +1,8 @@
 .profileBox 
   .ct
     = label_tag :avatar do
-      .profileBox_icon
+      .profileBox_icon{data: {current_id: current_user.id}}
         = image_tag  current_user.avataor_image, class: 'object-fit avatar'
-        -# = image_tag  'Ellipse.png', class: 'object-fit avatar'
         = file_field_tag :avatar, class: 'uploader', style: 'display:none'
     .profileBox_dataBox
       .profileBox_dataBox_inner
