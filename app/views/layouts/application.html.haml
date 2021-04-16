@@ -11,7 +11,7 @@
     %header
       .ct.headerCt
         - if user_signed_in?
-          - if current_page?(root_path) 
+          - if current_page?(root_path)
             -# 投稿画面遷移
             = link_to new_card_path do
               = image_tag 'photo-camera (1).png'

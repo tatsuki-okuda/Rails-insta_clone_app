@@ -12,9 +12,6 @@ const setImg = img => {
 }
 
 
-
-
-
 document.addEventListener('turbolinks:load', () => {
 
   // 最初にデフォルトの画像でimgタグを作る
