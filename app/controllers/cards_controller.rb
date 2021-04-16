@@ -17,7 +17,7 @@ class CardsController < ApplicationController
     @card = current_user.cards.build(card_params)
 
     if @card.save
-        redirect_to cards_path, notice: '保存できました'
+        redirect_to root_path, notice: '保存できました'
     else
         flash.now[:error] = '保存に失敗しました'
         render :new
@@ -27,6 +27,6 @@ class CardsController < ApplicationController
   
   private
   def card_params
-    params.require(:card).permit(:content, :imgs)
+    params.require(:card).permit(:content, imgs:[])
   end
 end
