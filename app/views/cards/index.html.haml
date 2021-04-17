@@ -11,12 +11,12 @@
               %p 3 hours ago
           .card_body
             - if card.imgs&.attached?
-              = image_tag card.imgs[0]
+              - card.imgs.each do |img| 
+                .card_body_inner
+                  = image_tag img, class: 'object-fit'
             - else
-              = image_tag 'Rectangle1.png'
               .card_body_inner
-                = image_tag 'Rectangle (1).png'
-                = image_tag 'Rectangle (2).png'
+                = image_tag 'Rectangle1.png'
           .card_footer
             .card_footer_icons
               = image_tag 'Vector.png'
