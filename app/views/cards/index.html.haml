@@ -9,13 +9,15 @@
             .card_header_text
               %p name
               %p 3 hours ago
-          .card_body
+          .card_body.swiper-container
             - if card.imgs&.attached?
-              - card.imgs.each do |img| 
-                .card_body_inner
-                  = image_tag img, class: 'object-fit'
+              .swiper-wrapper
+                - card.imgs.each do |img| 
+                  .card_body_inner.swiper-slide
+                    = image_tag img, class: 'object-fit'
+              .swiper-pagination
             - else
-              .card_body_inner
+              .card_body_inner.swiper-slide
                 = image_tag 'Rectangle1.png'
           .card_footer
             .card_footer_icons
@@ -28,4 +30,4 @@
               Jmax_21  Summer holiday :3
 
 
-      
+= javascript_pack_tag 'card'
