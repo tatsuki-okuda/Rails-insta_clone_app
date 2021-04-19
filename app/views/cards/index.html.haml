@@ -5,10 +5,20 @@
         %li.card
           .card_header
             = link_to profile_path, class: "card_header_img" do
-              = image_tag current_user.avataor_image, class: 'object-fit'
+              = image_tag card.user.avataor_image, class: 'object-fit'
             .card_header_text
-              %p name
-              %p 3 hours ago
+              %p 
+                = card.user.username
+              %p
+                - if !card.distance_of_time_in_words_to_now(card.created_at) == ''
+                  = card.distance_of_time_in_words_to_now(card.created_at)
+                - else
+                  - if (Time.zone.now - card.created_at).floor / 3600 > 24
+                    = (Time.zone.now - card.created_at).floor / 14400
+                    days ago
+                  - else
+                    = (Time.zone.now - card.created_at).floor / 3600
+                    hours ago
           .card_body.swiper-container
             - if card.imgs&.attached?
               .swiper-wrapper
