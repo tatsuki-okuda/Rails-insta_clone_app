@@ -4,8 +4,7 @@ class CardsController < ApplicationController
     # ログインしてない時はログイン画面に飛ばす
     redirect_to new_user_session_path unless user_signed_in?
     if(current_user)
-
-      @cards = current_user.cards.all
+      @cards = Card.all
     end
   end
 
