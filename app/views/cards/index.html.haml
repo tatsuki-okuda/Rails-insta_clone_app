@@ -3,6 +3,7 @@
     %ul
       - @cards.each do |card|
         %li.card
+          -# コンテンツtop
           .card_header
             = link_to profile_path, class: "card_header_img" do
               = image_tag card.user.avataor_image, class: 'object-fit'
@@ -19,6 +20,9 @@
                   - else
                     = (Time.zone.now - card.created_at).floor / 3600
                     hours ago
+            = link_to "https://twitter.com/share?url=#{ request.url }cards/#{card.id}&text=#{ card.content }", class: 'card_header_twitter btn btn-default', target: '_blank' do
+              = icon("fab", "twitter", class: "twitter-icon")
+          -# 画像
           .card_body.swiper-container
             - if card.imgs&.attached?
               .swiper-wrapper
@@ -29,6 +33,7 @@
             - else
               .card_body_inner.swiper-slide
                 = image_tag 'Rectangle1.png'
+          -# コンテンツbottom
           .card_footer
             .card_footer_icons
               = image_tag 'Vector.png'
@@ -36,6 +41,7 @@
               = image_tag 'Vector (2).png'
             %p.card_footer_text 
               = card.content
+            = link_to '...view more',card_path(card)  , class: 'card_footer_link'
             %p.card_footer_text 
               Jmax_21  Summer holiday :3
 

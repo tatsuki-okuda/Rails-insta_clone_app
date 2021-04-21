@@ -1,0 +1,40 @@
+.card 
+  .ct 
+    .card
+      .card_header
+        = link_to profile_path, class: "card_header_img" do
+          = image_tag @card.user.avataor_image, class: 'object-fit'
+        .card_header_text
+          %p 
+            = @card.user.username
+          %p
+            - if !@card.distance_of_time_in_words_to_now(@card.created_at) == ''
+              = @card.distance_of_time_in_words_to_now(@card.created_at)
+            - else
+              - if (Time.zone.now - @card.created_at).floor / 3600 > 24
+                = (Time.zone.now - @card.created_at).floor / 14400
+                days ago
+              - else
+                = (Time.zone.now - @card.created_at).floor / 3600
+                hours ago
+        = link_to "https://twitter.com/share?url=#{ request.url }cards/#{@card.id}&text=#{ @card.content }", class: 'card_header_twitter btn btn-default', target: '_blank' do
+          = icon("fab", "twitter", class: "twitter-icon")
+      .card_body.swiper-container
+        - if @card.imgs&.attached?
+          .swiper-wrapper
+            - @card.imgs.each do |img| 
+              .card_body_inner.swiper-slide
+                = image_tag img, class: 'object-fit'
+          .swiper-pagination
+        - else
+          .card_body_inner.swiper-slide
+            = image_tag 'Rectangle1.png'
+      .card_footer
+        .card_footer_icons
+          = image_tag 'Vector.png'
+          = image_tag 'Vector (1).png'
+          = image_tag 'Vector (2).png'
+        %p.card_footer_text 
+          = @card.content
+        %p.card_footer_text 
+          Jmax_21  Summer holiday :3

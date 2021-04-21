@@ -8,6 +8,15 @@ class CardsController < ApplicationController
     end
   end
 
+  def show
+    # ログインしてない時はログイン画面に飛ばす
+    redirect_to new_user_session_path unless user_signed_in?
+    if(current_user)
+      @card =  Card.find(params[:id])
+    end
+  end
+  
+
   def  new
     @card = current_user.cards.build
   end

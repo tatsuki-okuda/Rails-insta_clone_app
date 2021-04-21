@@ -2,6 +2,8 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    - if current_page?(card_path)
+      = display_meta_tags(default_meta_tags)
     %title InstaCloneApp
     = csrf_meta_tags
     = csp_meta_tag
@@ -28,7 +30,8 @@
                 %p.post Post 
             - else
               -# 戻るの矢印
-              = image_tag 'arrow.png', class: 'arrow-back'
+              =link_to request.referer  do
+                = image_tag 'arrow.png', class: 'arrow-back'
           -# プロフィールの時は名前を表示
           - if current_page?(profile_path)
             %p.userName 
