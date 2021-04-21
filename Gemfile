@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'font-awesome-sass'
 gem 'annotate'
 gem 'active_decorator'
 # activerecordに紐づくデータをAPIにしてくれるgem
@@ -32,6 +33,8 @@ gem 'faker'
 gem 'hamlit'
 # /ログイン
 gem 'devise'
+# メタタグ
+gem 'meta-tags'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
