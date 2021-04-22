@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    - if current_page?(card_path)
+    - if(@card && current_page?(card_path))
       = display_meta_tags(default_meta_tags)
     %title InstaCloneApp
     = csrf_meta_tags
