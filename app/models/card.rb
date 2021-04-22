@@ -15,6 +15,7 @@
 class Card < ApplicationRecord
   belongs_to :user
   has_many_attached :imgs, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
 
 

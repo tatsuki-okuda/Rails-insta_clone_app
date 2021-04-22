@@ -16,8 +16,6 @@
           .swiper-wrapper
           -# ここにjsで画像を入れる
           .swiper-pagination
-
-
         %div
           = f.file_field :imgs,multiple: true, class: 'imgs uploader'
         = f.submit "保存", class: 'btn-primary'
