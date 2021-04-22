@@ -1,5 +1,6 @@
 class AvatarsController < ApplicationController
   
+
   def show
     if current_user.avatar
       @avatar = current_user.avatar

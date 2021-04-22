@@ -26,16 +26,23 @@ class User < ApplicationRecord
   
   has_many :cards, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
 
 
-  def avataor_image
+  def avataor_image 
     if avatar.attached?
       avatar
     else
       'Ellipse.png'
     end
   end
+
+  def has_liked?(card)
+    likes.exists?(card_id: card.id)
+    
+  end
+  
 
 
 
