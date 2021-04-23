@@ -79,8 +79,33 @@
       align-items: center;
       margin-bottom: 8px;
       & img {
-        &:nth-child(2){
+        &.margin{
           margin: 0 14px;
+        }
+      }
+      .like-active{
+        opacity: 1;
+        transition: .3s;
+        &.hidden{
+          opacity: 0;
+        }
+      }
+      .like-nonActive{
+        opacity: 1;
+        transition: .3s;
+        &.hidden{
+          opacity: 0;
+        }
+      }
+      .likesBox{
+        position: relative;
+        width: 16px;
+        height: 16px;
+        & img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 5;
         }
       }
     }
