@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'cards#index'
 
   resources :cards do
-    resource :like, only: [:create, :destroy]
+    resource :like, only: [:show, :create, :destroy]
   end
 
   resource :profile

@@ -1,6 +1,14 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
 
+
+  def show
+    card = Card.find(params[:card_id])
+    like_status = current_user.has_liked?(card)
+    render json: { hasLiked: like_status}
+  end
+  
+
   def create
     card = Card.find(params[:card_id])
     card.likes.create!(user_id: current_user.id)

@@ -40,7 +40,6 @@ class User < ApplicationRecord
 
   def has_liked?(card)
     likes.exists?(card_id: card.id)
-    
   end
   
 
