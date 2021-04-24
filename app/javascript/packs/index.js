@@ -1,21 +1,10 @@
 import axios from 'modules/axios'
-// import 'modules/like'
+import {
+  likeCheckStatus,
+	likeDo,
+	likeDone
+} from 'modules/like'
 
-
-// *****************************
-// 初期のいいねの状態を振り分ける
-// *****************************
-function likeCheck(Id,hasLiked){
-  // 対象となるdata属性の子要素をクラス名から取得する
-  const likeActive = document.querySelector(`[data-card-id="${Id}"]`).querySelector('.like-active')
-  const likeNonActive = document.querySelector(`[data-card-id="${Id}"]`).querySelector('.like-nonActive')
-  if(hasLiked){
-    likeActive.classList.remove('hidden')
-    likeNonActive.classList.add('hidden')
-  } else{
-    likeNonActive.classList.remove('hidden')
-  }
-}
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -33,27 +22,29 @@ document.addEventListener('turbolinks:load', () => {
   // *****************************
   // いいねの初期状態を確認する
   // *****************************
-  // 表示されている全投稿のIDを取得する
+  // 表示されている全投稿を取得する
   const cardIds = document.querySelectorAll('.card');
   // 各投稿に紐づくいいねの状態をリクエストする。
   cardIds.forEach(cardId => {
+    // 各カードのデータ属性の値を取得
     const Id = cardId.dataset.cardId
-    axios.get(`/cards/${Id}/like`)
-    .then((response) => {
-      // jsonデータ取得
-      const hasLiked = response.data.hasLiked;
-      likeCheck(Id,hasLiked);
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+    // 対象となるdata属性の子要素をクラス名から取得する
+    // showページでquerySelectorがnullとエラーが出たのでIdがfalseの時に処理をしないようにする
+    if(Id){
+      const likeActive = document.querySelector(`[data-card-id="${Id}"]`).querySelector('.like-active')
+      const likeNonActive = document.querySelector(`[data-card-id="${Id}"]`).querySelector('.like-nonActive')
+      // いいねの初期状態のセット
+      likeCheckStatus(Id,likeActive,likeNonActive)
+      // クリックでいいねできる。
+      likeNonActive.addEventListener('click',function(){
+        likeDo(Id,likeActive,likeNonActive);
+      });
+      // クリックイベントでいいねを解除
+      likeActive.addEventListener('click',function(){
+        likeDone(Id,likeActive,likeNonActive);
+      });
+    }
   });
-
-
-  // *****************************
-  
-  // *****************************
-
 
 })
 
