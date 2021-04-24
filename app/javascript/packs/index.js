@@ -40,7 +40,7 @@ document.addEventListener('turbolinks:load', () => {
     const Id = cardId.dataset.cardId
     axios.get(`/cards/${Id}/like`)
     .then((response) => {
-      // console.log('ok')
+      // jsonデータ取得
       const hasLiked = response.data.hasLiked;
       likeCheck(Id,hasLiked);
     })
@@ -48,6 +48,11 @@ document.addEventListener('turbolinks:load', () => {
       console.log(e)
     })
   });
+
+
+  // *****************************
+  
+  // *****************************
 
 
 })

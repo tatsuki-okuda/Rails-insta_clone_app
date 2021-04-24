@@ -83,18 +83,14 @@
           margin: 0 14px;
         }
       }
-      .like-active{
-        opacity: 1;
-        transition: .3s;
-        &.hidden{
-          opacity: 0;
-        }
-      }
+      .like-active,
       .like-nonActive{
         opacity: 1;
         transition: .3s;
+        pointer-events: auto;
         &.hidden{
           opacity: 0;
+          pointer-events: none;
         }
       }
       .likesBox{
