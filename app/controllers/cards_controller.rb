@@ -14,10 +14,8 @@ class CardsController < ApplicationController
       @card =  Card.find(params[:id])
 
     end
-    
   end
   
-
   def  new
     @card = current_user.cards.build
   end
