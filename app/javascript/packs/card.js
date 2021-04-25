@@ -42,6 +42,9 @@ document.addEventListener('turbolinks:load', () => {
 		likeDone(cardId,likeActive,likeNonActive);
 	});
 
+
+
+
 })
 
 
