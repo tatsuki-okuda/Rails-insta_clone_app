@@ -18,5 +18,6 @@ module InstaCloneApp
 
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
+    routes.default_url_options[:host] = 'http://localhost:3000' # 追加
   end
 end
