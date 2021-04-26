@@ -45,13 +45,15 @@ document.addEventListener('turbolinks:load', () => {
   // const userId = document.querySelector('.comment').dataset.userId;
   const commentBtn  = document.querySelector('.comment_input_btn');
 
+
   axios.get(`/cards/${cardId}/comments/json`)
   .then((response) => {
     const comments = response.data
-    console.log( comments);
-    comments.forEach(comment => {
-      newCommentAdd(comment);
-    });
+    if(comments){
+      comments.forEach(comment => {
+        newCommentAdd(comment);
+      });
+    }
   })
 
   // **********************
