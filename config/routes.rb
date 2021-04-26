@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   resources :cards do
     resource :like, only: [:show, :create, :destroy]
-    resources :comments, only: [:index,:show, :create]
+    resources :comments, only: [:index, :create] do
+      collection do
+        get :json
+      end
+    end
   end
 
   resource :profile

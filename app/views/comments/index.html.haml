@@ -1,15 +1,15 @@
 .comment{data: {card_id: params[:card_id], user_id: current_user.id}}
   .ct 
     %ul.comment_box
-      - @comments.each do |comment|
-        %li
-          .comment_box_leftIcon
-            = image_tag comment.user.avataor_image, class: 'object-fit'
-          .comment_box_rightText
-            %p.comment_box_rightText_name
-              = comment.user.username
-            %p.comment_box_rightText_text
-              = comment.content
+      -# - @comments.each do |comment|
+      -#   %li
+      -#     .comment_box_leftIcon
+      -#       = image_tag comment.user.avataor_image, class: 'object-fit'
+      -#     .comment_box_rightText
+      -#       %p.comment_box_rightText_name
+      -#         = comment.user.username
+      -#       %p.comment_box_rightText_text
+      -#         = comment.content
     .comment_input.hidden
       = text_area_tag :comment_content, '', class: 'commentValue',placeholder: 'コメントを入力'
       .comment_input_btn
