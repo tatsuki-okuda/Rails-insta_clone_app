@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def index
     @card = Card.find(params[:card_id])
     @comments = @card.comments
-    render json: {coments: @comments , username: @card.user.username, userAvatorUrl: url_for(@card.user.avatar) }
+    # render json: {coments: @comments , username: @card.user.username, userAvatorUrl: url_for(@card.user.avatar) }
   end
 
   # def show
@@ -16,15 +16,15 @@ class CommentsController < ApplicationController
   
   
   def create
-    card = Card.find(params[:card_id])
-    @comment = card.comments.build(comment_params)
+    @comment = current_user.comments.build(comment_params)
+    # @comment.card_id = params[:card_id]
     @comment.save!
     render json: @comment
   end
   
   private
   def comment_params
-      params.require(:comment).permit(:content)
+      params.require(:comment).permit(:content, :card_id)
   end
 
 end
