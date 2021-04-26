@@ -33,17 +33,18 @@ function newCommentAdd(newComment){
 
 document.addEventListener('turbolinks:load', () => {
   const cardId = document.querySelector('.comment').dataset.cardId;
+  const userId = document.querySelector('.comment').dataset.userId;
   const commentBtn  = document.querySelector('.comment_input_btn');
 
-  axios.get(`/cards/${cardId}/comments`)
-  .then((response) => {
-    const comments = response.data
-    console.log( comments)
+  // axios.get(`/cards/${cardId}/comments`)
+  // .then((response) => {
+  //   const comments = response.data
+  //   console.log( comments)
     
-    comments.forEach(comment => {
-      newCommentAdd(comment);
-    });
-  })
+  //   comments.forEach(comment => {
+  //     newCommentAdd(comment);
+  //   });
+  // })
 
   // **********************
   // post
@@ -53,7 +54,7 @@ document.addEventListener('turbolinks:load', () => {
     const value = commentValue.value;
     if(value){
       axios.post(`/cards/${cardId}/comments`,{
-        comment: {content: value}
+        comment: {content: value, card_id: cardId}
       })
       .then((response) => {
         const newComment = response.data
