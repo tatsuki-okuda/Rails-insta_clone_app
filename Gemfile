@@ -35,6 +35,11 @@ gem 'hamlit'
 gem 'devise'
 # メタタグ
 gem 'meta-tags'
+# 非同期処理
+gem 'sidekiq'
+# メール
+gem 'letter_opener'
+gem 'letter_opener_web', '~> 1.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
