@@ -19,4 +19,15 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :card
   # validates :content, presence: true
+
+
+  after_create :send_email
+
+  private
+
+  def send_email
+    # RelationshipMailer.new_comment(user,card).deliver_now
+    RelationshipMailer.new_comment(user,card).deliver_later
+  end
+  
 end
