@@ -27,7 +27,14 @@ class Comment < ApplicationRecord
 
   def send_email
     # RelationshipMailer.new_comment(user,card).deliver_now
-    RelationshipMailer.new_comment(user,card).deliver_later
+    
+
+    users = User.all
+    users.each do |user|
+      if(self.content.include?("@#{user.username}"))
+        RelationshipMailer.new_comment(user,card).deliver_later
+      end
+    end
   end
   
 end
