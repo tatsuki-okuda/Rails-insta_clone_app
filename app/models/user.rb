@@ -29,6 +29,15 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  # 自分がフォローしている人との関連
+  has_many :following_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
+  has_many :followings, through: :following_relationships, source: :following
+
+  # フォロワーとの関連
+  has_many :follower_relationships, foreign_key: 'following_id', class_name: 'Relationship', dependent: :destroy
+  has_many :followers, through: :follower_relationships, source: :follower
+
+
   
 
   def avataor_image 
@@ -42,6 +51,18 @@ class User < ApplicationRecord
   def has_liked?(card)
     likes.exists?(card_id: card.id)
   end
+  
+  # フォローを作る時はフォロする人のIDをfollowing_idとして保存する。
+  # この時のfollower_idには自分のIDが入る。
+  def follow!(user)
+    following_relationships.create!(following_id: user.id);
+  end
+
+  def unfollow!(user)
+    relation_record = following_relationships.find_by!(following_id: user.id)
+    relation_record.destroy!
+  end
+  
   
 
 
