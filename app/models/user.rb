@@ -40,6 +40,9 @@ class User < ApplicationRecord
 
   
 
+  # ******************************
+  # アバターメソッド
+  # ******************************
   def avataor_image 
     if avatar.attached?
       avatar
@@ -48,23 +51,49 @@ class User < ApplicationRecord
     end
   end
 
+  # ******************************
+  # いいねメソッド
+  # ******************************
   def has_liked?(card)
     likes.exists?(card_id: card.id)
   end
+
+  # ******************************
+  # フォローしているかどうかのチェック
+  # ******************************
+  def has_followed?(user_id)
+    following_relationships.exists?(following_id: user_id)
+  end
   
+  # ******************************
+  # フォローメソッド
+  # ******************************
   # フォローを作る時はフォロする人のIDをfollowing_idとして保存する。
   # この時のfollower_idには自分のIDが入る。
   def follow!(user)
-    following_relationships.create!(following_id: user.id);
+    user_id = get_user_id(user)
+    following_relationships.create!(following_id: user_id);
   end
 
+  # ******************************
+  # アンフォローメソッド
+  # ******************************
   def unfollow!(user)
-    relation_record = following_relationships.find_by!(following_id: user.id)
+    user_id = get_user_id(user)
+    relation_record = following_relationships.find_by!(following_id: user_id)
     relation_record.destroy!
   end
-  
-  
 
+
+  private
+  def get_user_id(user)
+    if user.is_a?(User)
+      user.id
+    else
+      user
+    end
+  end
+  
 
 
   

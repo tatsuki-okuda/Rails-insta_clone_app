@@ -1,9 +1,15 @@
 .profileBox 
   .ct
     = label_tag :avatar do
-      .profileBox_icon{data: {current_id: current_user.id}}
-        -# = image_tag  '', class: 'object-fit avatar'
-        = file_field_tag :avatar, class: 'uploader', style: 'display:none'
+      .profileBox_icon{data: {current_id: @user.id}}
+        -if @user.id == current_user.id 
+          = file_field_tag :avatar, class: 'uploader', style: 'display:none'
+    -if !(@user == current_user)
+      .profileBox_follow-btnBox{data: {user_id: @user.id}}
+        .profileBox_follow-btn
+          Follow
+        .profileBox_unfollow-btn.hidden
+          UnFollow
     .profileBox_dataBox
       .profileBox_dataBox_inner
         %p 44
