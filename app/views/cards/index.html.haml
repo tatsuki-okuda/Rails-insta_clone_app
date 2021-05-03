@@ -5,7 +5,7 @@
         %li.card{data: {card_id: card.id}}
           -# コンテンツtop
           .card_header
-            = link_to profile_path, class: "card_header_img" do
+            = link_to profile_path(card.user), class: "card_header_img" do
               = image_tag card.user.avataor_image, class: 'object-fit'
             .card_header_text
               %p 

@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
 
   def show
-    @avatar = current_user.avatar
-    # render "avatar", formats: :json, handlers: "jbuilder"   
+    @user = User.find(params[:id])
+    @avatar = @user.avatar 
   end
 
 

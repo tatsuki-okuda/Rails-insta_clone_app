@@ -19,7 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :profile
+  resources :profiles, only: [:show] do
+    resources :follows, only: [:create]
+    resource :follows, only: [:show]
+    resources :unfollows, only: [:create]
+  end
+
   resource :avatar
 
 end

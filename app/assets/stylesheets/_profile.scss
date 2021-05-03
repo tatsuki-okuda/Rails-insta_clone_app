@@ -23,6 +23,40 @@
     }
   }
 
+  &_follow-btnBox{
+    position: relative;
+    margin-bottom: 30px;
+    height: 30px;
+  }
+  &_follow-btn,
+  &_unfollow-btn{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 200px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 0 auto;
+    padding: .2em 0;
+    background-color: skyblue;
+    color: white;
+    opacity: 1;
+    transition: .3s;
+    pointer-events: auto;
+    &.hidden{
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+
+  &_unfollow-btn{
+    background-color: gray;
+  }
+
+
+
 
   &_dataBox{
     display: flex;
