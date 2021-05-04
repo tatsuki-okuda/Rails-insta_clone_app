@@ -4,6 +4,7 @@
       .profileBox_icon{data: {current_id: @user.id}}
         -if @user.id == current_user.id 
           = file_field_tag :avatar, class: 'uploader', style: 'display:none'
+    -# フォローbtn
     -if !(@user == current_user)
       .profileBox_follow-btnBox{data: {user_id: @user.id}}
         .profileBox_follow-btn
@@ -12,14 +13,19 @@
           UnFollow
     .profileBox_dataBox
       .profileBox_dataBox_inner
-        %p 44
+        %p
+          = @user.cards.count
         %p Posts
       .profileBox_dataBox_inner
-        %p 44
-        %p Followers
+        %p 
+          = @user.followers.count
+        =link_to profile_followerpage_path(@user.id),class: "" do
+          Followers  
       .profileBox_dataBox_inner
-        %p 44
-        %p Following
+        %p 
+          = @user.followings.count
+        =link_to profile_followingpage_path(@user.id),class: "" do
+          Following
     .profileBox_imgBox 
       = image_tag 'img3.png'
       %div

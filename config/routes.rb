@@ -23,6 +23,13 @@ Rails.application.routes.draw do
     resources :follows, only: [:create]
     resource :follows, only: [:show]
     resources :unfollows, only: [:create]
+    # フォロー一覧
+    resource :followingpage, only: [:show]
+    resource :followingapi, only: [:show]
+
+    # フォロワー一覧
+    resource :followerpage, only: [:show]
+    resource :followerapi, only: [:show]
   end
 
   resource :avatar

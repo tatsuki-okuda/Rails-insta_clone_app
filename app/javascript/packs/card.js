@@ -24,23 +24,26 @@ document.addEventListener('turbolinks:load', () => {
 	// *****************************
 	const likeActive = document.querySelector('.like-active');
   const likeNonActive = document.querySelector('.like-nonActive');
-  const cardId = document.querySelector('.card').dataset.cardId;
-	// *****************************
-	// 読み込み時にいいねの状態を確認する
-	// *****************************
-	likeCheckStatus(cardId,likeActive,likeNonActive);
-	// *****************************
-  // クリックイベントでいいねをする
-  // *****************************
-	likeNonActive.addEventListener('click',function(){
-		likeDo(cardId,likeActive,likeNonActive);
-	});
-	// *****************************
-  // クリックイベントでいいねを解除
-  // *****************************
-	likeActive.addEventListener('click',function(){
-		likeDone(cardId,likeActive,likeNonActive);
-	});
+	const card = document.querySelector('.card');
+	if(card){
+		const cardId = card.dataset.cardId;
+		// *****************************
+		// 読み込み時にいいねの状態を確認する
+		// *****************************
+		likeCheckStatus(cardId,likeActive,likeNonActive);
+		// *****************************
+		// クリックイベントでいいねをする
+		// *****************************
+		likeNonActive.addEventListener('click',function(){
+			likeDo(cardId,likeActive,likeNonActive);
+		});
+		// *****************************
+		// クリックイベントでいいねを解除
+		// *****************************
+		likeActive.addEventListener('click',function(){
+			likeDone(cardId,likeActive,likeNonActive);
+		});
+	}
 
 
 

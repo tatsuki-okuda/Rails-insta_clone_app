@@ -41,43 +41,51 @@ function newCommentAdd(newComment){
 
 
 document.addEventListener('turbolinks:load', () => {
-  const cardId = document.querySelector('.comment').dataset.cardId;
-  // const userId = document.querySelector('.comment').dataset.userId;
-  const commentBtn  = document.querySelector('.comment_input_btn');
 
+  const comment = document.querySelector('.comment');
 
-  axios.get(`/cards/${cardId}/comments/json`)
-  .then((response) => {
-    const comments = response.data
-    if(comments){
-      comments.forEach(comment => {
-        newCommentAdd(comment);
-      });
-    }
-  })
-
-  // **********************
-  // post
-  // **********************
-  commentBtn.addEventListener('click', function(){
-    const commentValue = document.querySelector('.commentValue');
-    const value = commentValue.value;
-    if(value){
-      axios.post(`/cards/${cardId}/comments`,{
-        comment: {content: value, card_id: cardId}
-      })
+  if(comment){
+    const cardId = comment.dataset.cardId;
+    // const userId = document.querySelector('.comment').dataset.userId;
+    const commentBtn  = document.querySelector('.comment_input_btn');
+  
+    if(cardId){
+      axios.get(`/cards/${cardId}/comments/json`)
       .then((response) => {
-        const newComment = response.data
-        newCommentAdd(newComment);
-        commentValue.value = '';
-        console.log('ok');
+        const comments = response.data
+        if(comments){
+          comments.forEach(comment => {
+            newCommentAdd(comment);
+          });
+        }
       })
-      .catch((e) => {
-        console.log(e)
-      })
-    } else{
-      window.alert('コメントを入力してください！');
     }
-  });
+
+    // **********************
+    // post
+    // **********************
+    commentBtn.addEventListener('click', function(){
+      const commentValue = document.querySelector('.commentValue');
+      const value = commentValue.value;
+      if(value){
+        axios.post(`/cards/${cardId}/comments`,{
+          comment: {content: value, card_id: cardId}
+        })
+        .then((response) => {
+          const newComment = response.data
+          newCommentAdd(newComment);
+          commentValue.value = '';
+          console.log('ok');
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+      } else{
+        window.alert('コメントを入力してください！');
+      }
+    });
+
+  }
+
 
 });
