@@ -86,6 +86,10 @@ class User < ApplicationRecord
 
 
   private
+
+  # ******************************
+  # userをインスタンスかどうかで振り分ける
+  # ******************************
   def get_user_id(user)
     if user.is_a?(User)
       user.id
