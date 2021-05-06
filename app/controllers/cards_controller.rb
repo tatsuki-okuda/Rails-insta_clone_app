@@ -3,7 +3,21 @@ class CardsController < ApplicationController
     # ログインしてない時はログイン画面に飛ばす
     redirect_to new_user_session_path unless user_signed_in?
     if(current_user)
-      @cards = Card.all
+      user_ids = current_user.followings.pluck(:id)
+      # @cards = Card
+      #           .where(updated_at: (Time.now - 24.hours)..Time.now)
+      #           .where(user_id: user_ids).joins(:likes)
+      #           .order(created_at: :desc)
+      #           .limit(5)
+      #           .uniq
+      #           .sort {|a,b| b.likes.size <=> a.likes.size}
+
+      @cards = Card
+                .where(user_id: user_ids).joins(:likes)
+                .order(created_at: :desc)
+                .limit(5)
+                .uniq
+                .sort {|a,b| b.likes.size <=> a.likes.size}
     end
   end
 
