@@ -19,9 +19,14 @@ class Card < ApplicationRecord
   has_many :comments, dependent: :destroy
 
 
+  # validates :imgs, attached_file_presence: true
+  # validates :imgs, attached_file_number: { maximum: 10 }
+  validates :content, presence: true
+  validates :content, length: { minimum: 2, maximun: 150 }
+
 
   def distance_of_time_in_words_to_now(from_time)
-    distance_of_time_in_words(from_time, Time.zone.now)
+    distance_of_time_in_words(from_time, Time.zone.now) 
   end
 
   def distance_of_time_in_words(from_time, to_time)
