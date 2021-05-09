@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :new, :create,]
+  
   def index
     # ログインしてない時はログイン画面に飛ばす
     redirect_to new_user_session_path unless user_signed_in?
@@ -26,7 +28,6 @@ class CardsController < ApplicationController
     # redirect_to new_user_session_path unless user_signed_in?
     if(current_user)
       @card =  Card.find(params[:id])
-
     end
   end
   
