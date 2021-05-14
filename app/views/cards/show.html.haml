@@ -5,7 +5,7 @@
         = link_to profile_path(@card.user), class: "card_header_img" do
           = image_tag @card.user.avataor_image, class: 'object-fit'
         .card_header_text
-          %p 
+          %p.user_name
             = @card.user.username
           %p
             - if !@card.distance_of_time_in_words_to_now(@card.created_at) == ''
@@ -37,7 +37,7 @@
           = link_to card_comments_path(@card),class: 'comment-btn' do
             = image_tag 'Vector (1).png',class: 'margin'
           = image_tag 'Vector (2).png'
-        %p.card_footer_text 
+        %p.card_footer_text.text_first
           = @card.content
         %p.card_footer_text 
           Jmax_21  Summer holiday :3
